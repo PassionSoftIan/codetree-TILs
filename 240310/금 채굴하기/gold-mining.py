@@ -28,14 +28,14 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_result = 0
 for i in range(N):
     for j in range(N):
-        gold = arr[i][j]
+        gold = 0
         for p in range(2*(N-1) + 1):
             cost = p*p + (p+1)*(p+1)
-            if p != 0:
-                point_lst = []
-                point_set(i, j, p)
 
-                gold += search(point_lst, p)
+            point_lst = []
+            point_set(i, j, p)
+
+            gold += search(point_lst, p)
 
             if cost <= gold*M:
                 max_result = max(max_result, gold)
