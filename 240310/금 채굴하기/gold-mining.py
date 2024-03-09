@@ -28,8 +28,8 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_result = 0
 for i in range(N):
     for j in range(N):
-        gold = 0
-        for p in range(2*(N-1) + 1):
+        gold = arr[i][j]
+        for p in range(1, 2*(N-1) + 1):
             cost = p*p + (p+1)*(p+1)
 
             point_lst = []
