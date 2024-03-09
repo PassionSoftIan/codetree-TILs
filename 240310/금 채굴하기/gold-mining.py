@@ -24,7 +24,7 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_result = 0
 for i in range(N):
     for j in range(N):
-        for p in range(N):
+        for p in range(7):
             visited = [[0] * N for _ in range(N)]
             visited[i][j] = 1
             cost = p * p + (p + 1) * (p + 1)
