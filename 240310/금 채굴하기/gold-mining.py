@@ -24,14 +24,14 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_result = 0
 for i in range(N):
     for j in range(N):
-        for p in range(N-1):
+        for p in range(N):
             visited = [[0] * N for _ in range(N)]
             visited[i][j] = 1
-            cost = (p+1) * (p+1) + (p + 2) * (p + 2)
+            cost = p * p + (p + 1) * (p + 1)
             count = 0
             if arr[i][j] == 1:
                 count += 1
-            search(0, p+1, i, j)
+            search(0, p, i, j)
             if cost <= count * M:
                 max_result = max(max_result, count)
 
