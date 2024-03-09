@@ -27,7 +27,7 @@ for i in range(N):
         for p in range(N-1):
             visited = [[0] * N for _ in range(N)]
             visited[i][j] = 1
-            cost = p * p + (p + 1) * (p + 1)
+            cost = (p+1) * (p+1) + (p + 2) * (p + 2)
             count = 0
             if arr[i][j] == 1:
                 count += 1
