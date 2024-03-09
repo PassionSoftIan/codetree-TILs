@@ -13,4 +13,7 @@ while arr:
         else:
             count -= 1
 else:
-    print('Yes')
+    if count == 0:
+        print('Yes')
+    else:
+        print('No')
