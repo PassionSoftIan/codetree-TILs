@@ -11,6 +11,6 @@ while arr:
             print('No')
             break
         else:
-            count = 0
+            count -= 1
 else:
     print('Yes')
