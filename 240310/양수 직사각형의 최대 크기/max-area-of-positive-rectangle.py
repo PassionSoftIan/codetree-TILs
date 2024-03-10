@@ -3,7 +3,7 @@ def check_col(n, m, row, col):
     for k in range(row):
         temp = 0
         for p in range(col):
-            if 0 < arr[k][p]:
+            if 0 < arr[n+k][m+p]:
                 temp += 1
             else:
                 return count
@@ -12,10 +12,10 @@ def check_col(n, m, row, col):
 
 def check_row(n, m, row, col):    
     count = 0
-    for k in range(row):
+    for k in range(col):
         temp = 0
-        for p in range(col):
-            if 0 < arr[k][p]:
+        for p in range(row):
+            if 0 < arr[n+p][m+k]:
                 temp += 1
             else:
                 return count
