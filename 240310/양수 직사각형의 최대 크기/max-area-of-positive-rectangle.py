@@ -3,7 +3,7 @@ def check(n, m, col):
     for l in range(n, N):
         temp = 0
         for p in range(col):
-            if 0 < arr[l][p]:
+            if 0 < arr[l][m+p]:
                 temp += 1
             else:
                 return count
