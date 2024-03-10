@@ -1,9 +1,21 @@
-def check(n, m, row, col):
+def check_col(n, m, row, col):
     count = 0
-    for p in range(row):
+    for k in range(row):
         temp = 0
-        for l in range(col):
-            if 0 < arr[n+p][m+l]:
+        for p in range(col):
+            if 0 < arr[k][p]:
+                temp += 1
+            else:
+                return count
+        count += temp
+    return count
+
+def check_row(n, m, row, col):    
+    count = 0
+    for k in range(row):
+        temp = 0
+        for p in range(col):
+            if 0 < arr[k][p]:
                 temp += 1
             else:
                 return count
@@ -38,7 +50,7 @@ for i in range(N):
         if 0 < arr[i][j]:
             col_count = col(i, j)
             row_count = row(i, j)
-            max_result = max(max_result, check(i, j, row_count, col_count))
+            max_result = max(max_result, check_row(i, j, row_count, col_count), check_col(i, j, row_count, col_count))
 
 
 print(max_result)
