@@ -1,13 +1,23 @@
-def find(r, c):
+def check(n, m, col):
     count = 0
-    for p in range(r+1):
-        for u in range(c+1):
-            if 0 <= arr[p][u]:
-                count += 1
+    for l in range(n, N):
+        temp = 0
+        for p in range(col):
+            if 0 < arr[l][p]:
+                temp += 1
             else:
-                return 0
+                return count
+        count += temp
     return count
 
+def col(n, m):
+    count = 0
+    for k in range(m, M):
+        if 0 < arr[n][k]:
+            count += 1
+        else:
+            return count
+    return count
 
 N, M = map(int, input().split())
 
@@ -16,8 +26,9 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_result = 0
 for i in range(N):
     for j in range(M):
-        for k in range(i, N):
-            for l in range(j, M):
-                max_result = max(max_result, find(k, l))
+        if 0 < arr[i][j]:
+            col_count = col(i, j)
+            max_result = max(max_result, check(i, j, col_count))
+
 
 print(max_result)
