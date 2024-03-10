@@ -23,7 +23,7 @@ N, M = map(int, input().split())
 
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-max_result = 0
+max_result = -1
 for i in range(N):
     for j in range(M):
         if 0 < arr[i][j]:
