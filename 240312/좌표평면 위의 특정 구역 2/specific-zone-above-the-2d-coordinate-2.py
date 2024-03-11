@@ -12,14 +12,10 @@ ex)
 '''
 
 '''
-순서대로 하나씩 빼기
-
-for i in range(N):
-    for j in range(N):
-        if i == j:
-            continue
-        print(j)
-
+1 - 내 풀이 방법
+1) 배열에 있는 좌표를 순서대로 하나씩 뺀 상태에서 x의 최대 최소값, y의 최대 최소값을 구한다.
+2) 뺀 상태에서 사각형의 넓이를 구한다.
+3) 이중 가장 작은 사각형의 넓이를 답으로 출력한다.
 '''
 
 
@@ -30,12 +26,12 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_x = 0
 max_y = 0
 
-min_result = int(1e9)
+min_result = 160000000
 for i in range(N):
     max_x = 0
     max_y = 0
-    min_x = int(1e9)
-    min_y = int(1e9)
+    min_x = 50000
+    min_y = 50000
     for j in range(N):
         if i == j:
             continue
@@ -43,6 +39,7 @@ for i in range(N):
             max_x = arr[j][0]
         if max_y < arr[j][1]:
             max_y = arr[j][1]
+
         if min_x > arr[j][0]:
             min_x = arr[j][0]
         if min_y > arr[j][1]:
