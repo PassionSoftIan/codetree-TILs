@@ -26,7 +26,7 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 max_x = 0
 max_y = 0
 
-min_result = 160000000
+min_result = 1_600_000_000
 for i in range(N):
     max_x = 0
     max_y = 0
