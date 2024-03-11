@@ -16,6 +16,6 @@ max_result = -1
 for i in range(N):
     for j in range(M):
         for l in range(i, N):
-            for k in range(l, M):
+            for k in range(j, M):
                 max_result = max(max_result, max_sum(i, j, l, k))
 print(max_result)
