@@ -19,6 +19,7 @@ result = 0
 for i in range(N):
 
     x1, x2 = arr[i][0], arr[i][1]
+    
     count = 0
     for j in range(N):
         if i == j or visited[j] == 1:
@@ -26,7 +27,7 @@ for i in range(N):
     
         x3, x4 = arr[j][0], arr[j][1]
 
-        if x1 < x3 and x2 > x4:
+        if (x1 < x3 and x2 > x4) or (x1 < x3 and x2 > x4):
             visited[j] = 1
             count += 1
     if count != 0:
