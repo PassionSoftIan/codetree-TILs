@@ -23,11 +23,11 @@ students = [list(map(int, input().split())) for _ in range(N)]
 
 costs = []
 
-costs.sort(key=lambda x : x[1])
-
 for i in range(N):
     gift, delevery = students[i][0], students[i][1]
     costs.append([i, gift+delevery])
+
+costs.sort(key=lambda x : x[1])
 
 max_result = 0
 for i in range(N):
