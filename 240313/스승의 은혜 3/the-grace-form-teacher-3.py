@@ -44,8 +44,7 @@ for i in range(N):
         if temp_cost + costs[j][1] <= B:
             temp_cost = temp_cost + costs[j][1]
             count += 1
-        else:
-            break
+
     max_result = max(max_result, count)
 
 print(max_result)
