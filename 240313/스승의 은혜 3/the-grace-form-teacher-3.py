@@ -23,6 +23,8 @@ students = [list(map(int, input().split())) for _ in range(N)]
 
 costs = []
 
+costs.sort(key=lambda x : x[1])
+
 for i in range(N):
     gift, delevery = students[i][0], students[i][1]
     costs.append([i, gift+delevery])
@@ -42,8 +44,10 @@ for i in range(N):
             continue
         
         if temp_cost + costs[j][1] <= B:
-            temp_cost = temp_cost + costs[j][1]
+            temp_cost += costs[j][1]
             count += 1
+        else:
+            break
 
     max_result = max(max_result, count)
 
