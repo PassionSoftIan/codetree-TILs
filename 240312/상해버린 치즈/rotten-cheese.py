@@ -46,6 +46,8 @@ for i in range(1, N + 1):
         else:
             continue
         for k in range(D):
+            if eat[k][0] != i:
+                continue
             cheese_eat_time = eat[k][2]
             if sick_time > cheese_eat_time:
                 cheese_num = eat[k][1]
