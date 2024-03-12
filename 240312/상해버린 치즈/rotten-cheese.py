@@ -50,19 +50,21 @@ for i in range(S):
     for k in range(D):
         if eat[k][0] != human_num:
             continue
-        cheese_eat_time = eat[k][2]
+
         cheese_num = eat[k][1]
+
         if cheese_num in cheese_check[human_num]:
             continue
+
+        cheese_eat_time = eat[k][2]
+
         if sick_time > cheese_eat_time:
             cheese[cheese_num] += 1
-            human[human_num] = 1
             cheese_check[human_num].append(cheese_num)
 
 for i in range(D):
     human_num = eat[i][0]
     cheese_num = eat[i][1]
-    eat_time = eat[i][2]
     if human[human_num] == 0 and cheese[cheese_num] == S:
         human[human_num] = 1
         pill += 1
