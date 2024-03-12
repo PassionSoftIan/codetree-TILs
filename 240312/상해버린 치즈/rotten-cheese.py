@@ -37,24 +37,27 @@ cheese = [0] * (M+1)
 
 human = [0] * (N+1)
 
+cheese_check = [[] for _ in range(N+1)]
+
 pill = 0
 
-for i in range(1, N + 1):
-    for j in range(S):
-        sick_time = 0
-        if i == sick[j][0]:
-            sick_time = sick[j][1]
-            pill += 1
-        else:
+for i in range(S):
+    human_num = sick[i][0]
+    sick_time = sick[i][1]
+    
+    pill += 1
+
+    for k in range(D):
+        if eat[k][0] != human_num:
             continue
-        for k in range(D):
-            if eat[k][0] != i or human[i] == 1:
-                continue
-            cheese_eat_time = eat[k][2]
-            cheese_num = eat[k][1]
-            if sick_time > cheese_eat_time:
-                cheese[cheese_num] += 1
-                human[i] = 1
+        cheese_eat_time = eat[k][2]
+        cheese_num = eat[k][1]
+        if cheese_num in cheese_check[human_num]:
+            continue
+        if sick_time > cheese_eat_time:
+            cheese[cheese_num] += 1
+            human[human_num] = 1
+            cheese_check[human_num].append(cheese_num)
 
 
 for i in range(D):
