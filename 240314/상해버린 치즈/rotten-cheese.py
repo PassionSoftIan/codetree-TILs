@@ -63,19 +63,18 @@ for i in range(S):
             cheese_check[human_num].append(cheese_num)
 
 result = 0
-for check in range(M):
-    if cheese[check] != S:
+for cheese_suspected in range(M+1):
+    if cheese[cheese_suspected] != S:
         continue
     temp_pill = 0
     temp_human_check = [ _ for _ in human]
     for i in range(D):
         human_num = eat[i][0]
         cheese_num = eat[i][1]
-        if temp_human_check[human_num] == 0 and check ==cheese_num:
+        if temp_human_check[human_num] == 0 and cheese_suspected == cheese_num:
             temp_human_check[human_num] = 1
             temp_pill += 1
-    
-    if temp_pill + pill > result:
+    if temp_pill + pill >= result:
         result = temp_pill + pill
 
 print(result)
