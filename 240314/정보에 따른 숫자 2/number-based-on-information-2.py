@@ -42,7 +42,7 @@ def S_search(check_point):
         S_dist_right += 1
         right += 1
 
-        if right > b:
+        if right > 1000:
             S_dist_right = 1001
             break
     
@@ -70,7 +70,7 @@ def N_search(check_point):
         N_dist_right += 1
         right += 1
 
-        if right > b:
+        if right > 1000:
             N_dist_right = 1001
             break
     
