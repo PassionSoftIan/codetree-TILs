@@ -40,7 +40,6 @@ for i in range(max_hegith):
     count = 0
     bit = 0
     for check in range(N):
-
         if temp_ice_berg[check] != 0:
             bit = 1
 
@@ -50,5 +49,6 @@ for i in range(max_hegith):
             
         if bit == 1 and check == N-1:
             count += 1
+    max_result = max(max_result, count)
 
 print(max_result)
