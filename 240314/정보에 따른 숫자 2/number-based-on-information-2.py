@@ -11,7 +11,7 @@ b = 끝 점
 
 1- 내 풀이
 
-1) b+1칸의 1차원 배열을 만든다.
+1) 1001칸의 1차원 배열을 만든다.
 2) 1차원 배열에 S와 N을 배치한다.
 3) for i in range(a, b+1)를 순회한다.
 4) i를 1차원 배열의 Index로 잡고 왼쪽 오른쪽을 탐색하여 S를 찾는다.
@@ -82,7 +82,7 @@ def N_search(check_point):
 
 T, a, b = map(int, input().split())
 
-arr = [0] * (b+1)
+arr = [0] * 1001
 
 for i in range(T):
     point, idx = map(str, input().split())
