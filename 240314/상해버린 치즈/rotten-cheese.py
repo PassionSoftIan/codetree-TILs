@@ -68,7 +68,6 @@ for check in range(M):
         continue
     temp_pill = 0
     temp_human_check = [ _ for _ in human]
-    print(temp_human_check)
     for i in range(D):
         human_num = eat[i][0]
         cheese_num = eat[i][1]
