@@ -7,57 +7,48 @@
 1- 내 풀이
 
 1) 좌표 평면을 나타낼 2차원 배열 arr를 만든다. (점의 위치가 0이상 10이하 이기에 11x11)
-2) for i in range(N) 순회하며 점을 좌표평면에 그린다.
+2) for nc in range(N) 순회하며 점을 좌표평면에 그린다.
 2-1) 임시로 선을 그어볼 temp_arr 배열도 만들어 둔 뒤 2번 반복문이 새로 시작될 때 마다 갱신되게 한다.
-3) for j in range(12)를 순회하며 x 축에 평행한 직선을 그릴 점을 정한다.
-4) for k in range(12)를 순회하며 y 축에 평행한 직선을 그릴 점을 정한다.
-5) for l in range(12)를 순회하며 3, 4번 축과 겹치지 않게 함께 그릴 3번 째 직선을 x, y 번갈아 가며 그려본다.
+3) for i in range(11)를 순회하며 1번 선을 정한다.
+4) for j in range(11)를 순회하며 2번 선을 정한다.
+5) for k in range(11)를 순회하며 3번 선을 정한다.
 6) 선을 그릴 때는 해당 라인의 점이 != 0 일 경우 -=1을 한다.
-7) 3번 째 까지 그려볼 때 마다 sum(arr) == 0인지 확인하고 맞다면 1을 출력하고 프로그램을 종료한다.
+7) 3번 째 까지 그려볼 때 마다 점을 만나면 count +=1을 하고 해당 임시 배열의 좌표는 지운다(-=1).
+8) count == N이라면 맞다면 1을 출력하고 프로그램을 종료한다.
 8) 만약 프로그램이 종료되지 않고 2번 반복문까지 돌았을 경우에는 0을 출력한다.
 '''
 
 
-def check(y1, x2, yx3):
-    temp_arr = [[0]*11 for _ in range(11)]
+def new_temp_arr():
+    new_temp = [[0]*11 for _ in range(11)]
 
     for i in range(11):
         for j in range(11):
-            temp_arr[i][j] = arr[i][j]
+            new_temp[i][j] = arr[i][j]
 
-    # print(temp_arr)
+    return new_temp
 
-    temp_arr_count = 0
-    third_line_count = 0
 
-    # x축 평행선
+def check_x(x):
+
+    count = 0
     for i in range(11):
-        if temp_arr[y1][i] != 0:
-            temp_arr[y1][i] = 0
-            temp_arr_count += 1
-    
-    # y축 평행선
-    for j in range(11):
-        if temp_arr[j][x2] != 0:
-            temp_arr[j][x2] = 0
-            temp_arr_count += 1
+        if temp_arr[i][x] != 0:
+            temp_arr[i][x] = 0
+            count += 1
 
-    # x축 평행선 or y축 평행선
-    third_line = [ _ for _ in temp_arr]
+    return count
 
-    third_line_count = temp_arr_count
 
-    for k in range(11):
-        if temp_arr[yx3][k] != 0:
-            temp_arr_count += 1
+def check_y(y):
 
-        if third_line[k][yx3] != 0:
-            third_line_count += 1
+    count = 0
+    for i in range(11):
+        if temp_arr[y][i] != 0:
+            temp_arr[y][i] = 0
+            count += 1
 
-    if temp_arr_count == N or third_line_count == N:
-        return 1
-
-    return 0
+    return count
 
 
 N = int(input())
@@ -68,14 +59,32 @@ for i in range(N):
     x, y = map(int, input().split())
     arr[y][x] = 1
 
-#그어볼 y선
-for j in range(11):
-    #그어볼 x선
-    for k in range(11):
-        #그어볼 x선 or y선
-        for l in range(11):
-            if check(j, k, l) == 1:
-                print(1)                
-                exit()
+for l1 in range(11):
+    for l2 in range(11):
+        for l3 in range(11):
+            for check in range(4):
+                temp_arr = new_temp_arr()
+
+                result = 0
+                if check == 0:
+                    result += check_x(l1)
+                    result += check_x(l2)
+                    result += check_x(l3)
+                if check == 1:
+                    result += check_x(l1)
+                    result += check_x(l2)
+                    result += check_y(l3)
+                if check == 2:
+                    result += check_x(l1)
+                    result += check_y(l2)
+                    result += check_y(l3)
+                if check == 3:
+                    result += check_y(l1)
+                    result += check_y(l2)
+                    result += check_y(l3)
+                
+                if result == N:
+                    print(1)
+                    exit()
 
 print(0)
