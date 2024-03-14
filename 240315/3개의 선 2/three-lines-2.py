@@ -61,11 +61,11 @@ for i in range(N):
     arr[y][x] = 1
 
 #그어볼 y선
-for j in range(12):
+for j in range(11):
     #그어볼 x선
-    for k in range(12):
+    for k in range(11):
         #그어볼 x선 or y선
-        for l in range(12):
+        for l in range(11):
             if check(j, k, l) == 1:
                 print(1)                
                 exit()
