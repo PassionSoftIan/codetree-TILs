@@ -18,20 +18,28 @@
 '''
 
 
-def check(j, k, l):
-    temp_arr = [ _ for _ in arr]
+def check(y1, x2, yx3):
+    temp_arr = [[0]*11 for _ in range(11)]
+
+    for i in range(11):
+        for j in range(11):
+            temp_arr[i][j] = arr[i][j]
+
+    # print(temp_arr)
 
     temp_arr_count = 0
     third_line_count = 0
 
     # x축 평행선
     for i in range(11):
-        if temp_arr[i][j] != 0:
+        if temp_arr[y1][i] != 0:
+            temp_arr[y1][i] = 0
             temp_arr_count += 1
     
     # y축 평행선
     for j in range(11):
-        if temp_arr[k][j] != 0:
+        if temp_arr[j][x2] != 0:
+            temp_arr[j][x2] = 0
             temp_arr_count += 1
 
     # x축 평행선 or y축 평행선
@@ -40,10 +48,10 @@ def check(j, k, l):
     third_line_count = temp_arr_count
 
     for k in range(11):
-        if temp_arr[l][k] != 0:
+        if temp_arr[yx3][k] != 0:
             temp_arr_count += 1
 
-        if third_line[k][l] != 0:
+        if third_line[k][yx3] != 0:
             third_line_count += 1
 
     if temp_arr_count == N or third_line_count == N:
