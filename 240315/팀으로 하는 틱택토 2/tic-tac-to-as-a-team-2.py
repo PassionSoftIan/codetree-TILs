@@ -34,6 +34,7 @@ def row():
         for go in range(1, 10):
             if visited[go] == 1:
                 count += 1
+                temp.append(go)
         if count == 2:
             if is_duplicate(temp[0], temp[1]):
                 check_duplicate.append(temp)
