@@ -106,9 +106,7 @@ def is_duplicate(num1, num2):
     count = 0
     for check_arr in check_duplicate:
         if num1 in check_arr and num2 in check_arr:
-            count += 1
-            if count == 2:
-                return False
+            return False
     
     return True
 
