@@ -53,8 +53,6 @@ def col():
             if visited[go] == 1:
                 count += 1
         if count == 2:
-            print(visited)
-
             col_result += 1
 
     return col_result
