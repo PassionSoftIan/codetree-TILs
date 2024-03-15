@@ -114,7 +114,7 @@ def is_duplicate(num1, num2):
 
 arr = [list(map(int, input())) for _ in range(3)]
 
-check_duplicate = [[]]
+check_duplicate = [[-1, -1]]
 
 result = 0
 
