@@ -30,11 +30,14 @@ def row():
             visited[check] = 1
             
         count = 0
+        temp = []
         for go in range(1, 10):
             if visited[go] == 1:
                 count += 1
         if count == 2:
-            row_result += 1
+            if is_duplicate(temp[0], temp[1]):
+                check_duplicate.append(temp)
+                row_result += 1
 
     return row_result
 
@@ -49,11 +52,16 @@ def col():
             visited[check] = 1
 
         count = 0
+        temp = []
         for go in range(1, 10):
             if visited[go] == 1:
                 count += 1
+                temp.append(go)
+        
         if count == 2:
-            col_result += 1
+            if is_duplicate(temp[0], temp[1]):
+                check_duplicate.append(temp)
+                col_result += 1
 
     return col_result
 
@@ -76,18 +84,37 @@ def diag():
                 visited[check] = 1
 
         count = 0
+        temp = []
         for go in range(1, 10):
             if visited[go] == 1:
                 count += 1
+                temp.append(go)
+
         if count == 2:
-            diag_result += 1
+            if is_duplicate(temp[0], temp[1]):
+                check_duplicate.append(temp)
+                diag_result += 1       
 
     return diag_result
 
     return
 
 
+def is_duplicate(num1, num2):
+
+    count = 0
+    for check_arr in check_duplicate:
+        if num1 in check_arr and num2 in check_arr:
+            count += 1
+            if count == 2:
+                return False
+    
+    return True
+
+
 arr = [list(map(int, input())) for _ in range(3)]
+
+check_duplicate = [[]]
 
 result = 0
 
