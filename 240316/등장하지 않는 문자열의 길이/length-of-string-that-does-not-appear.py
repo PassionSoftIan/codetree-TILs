@@ -9,26 +9,35 @@
 1- 내 풀이
 
 1) 문자열을 아스키 코드로 저장한다.
-2) for i in range(1, N//2 + 1) 무조건 2번 이상 등장을 해야하니 idx는 절반만 가져가며 길이는 1 이상이다.
-3) 2번을 순회하며 길이를 특정한다.
-4) 
+2) for i in range(N)을 순회하며 시작점(idx)을 정한다.
+3) temp = [] 배열을 만든다.
+4) for j in range(i, N)을 순회하며 i 부터 추가될 알파벳을 넣는다.
+5) for k in range(N - len(temp))를 돌면서 temp에 저장된 배열을 확인할 시작점(check_idx)을 정한다.
+6) for l in range(k, N - len(temp))을 돌면서 시작점부터 temp에 저장된 배열과 비교하여 연속인지 본다.
+7) 6번 조건 충족 여부를 확인하기 위해 5와 6 사이 count를 만들고 6번 조건에 충족하면 count += 1을 한다.
+8) if count == 2일 경우 result = max(result, len(temp))로 교체한다.
+8) 등장하는 적이 없는 길이 중 최솟값이기 때문에 result + 1을 출력한다.
+
 '''
 
 N = int(input())
 
 arr = list(map(lambda x : ord(x) - 65 , input()))
 
-result = N//2 + 1
-for i in range(1, N//2 + 1):
-    bit = 0
-    for j in range(N//2 + 1):
-        for k in range(1, i-1):
-            if arr[j+k] - arr[j+k-1] != 1:
-                break
-        else:
-            bit = 1
-    if bit == 0:
-        print(i)
-        exit()
+result = 0
+for i in range(N):
+    temp = []
+    for j in range(i, N):
+        temp.append(arr[j])
 
-print(result)
+        count = 0
+        for k in range(N - len(temp) + 1):
+            for l in range(len(temp)):
+                if arr[k+l] != arr[l]:
+                    break
+            else:
+                count += 1
+        if count == 2:
+            result = max(result, len(temp))
+
+print(result + 1)
