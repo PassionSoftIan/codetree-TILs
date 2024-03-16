@@ -33,7 +33,7 @@ for i in range(N):
         count = 0
         for k in range(N - len(temp) + 1):
             for l in range(len(temp)):
-                if arr[k+l] != arr[l]:
+                if arr[k+l] != temp[l]:
                     break
             else:
                 count += 1
