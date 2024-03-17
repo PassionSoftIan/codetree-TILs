@@ -30,10 +30,12 @@ while nums:
     if nums:
         if min_check == 0:
             b = nums.pop()
+            min_check = a+b
         
         else:
             if min_check > nums[-1]:
                 b = nums.pop()
+                min_check = a+b
             else:
                 b = min_check
                 min_check += a
@@ -44,10 +46,4 @@ while nums:
     
     result += a+b
 
-    if min_check == 0:
-        min_check = a+b
-    else:
-        if min_check > a+b:
-            min_check = a+b
-    
 print(result)
