@@ -7,43 +7,32 @@
 
 1- 내 풀이
 
-1) 최소 값을 저장할 min_result = 0을 만든다.
-2) while len(nums) != 1일 동안 while문을 반복한다.
-3) nums를 역으로 정렬하여 뒤에 두 숫자를 뽑아 a, b로 만든다.
-4) min_result += a+b를 한 뒤 다시 nums.append(a+b)를 한다.
-5) while문이 끝나면 min_result를 출력한다.
+1) 우선순위 큐를 활용한다.
+2) import heapq를 하여 힙을 사용한 우선순위 큐 구현을 한다.
+3) pq = [] 빈 배열을 만든다.
+4) pq를 우선순위큐로 만들어 nums에 있는 원소들을 우선순위 큐를 유지하며 넣는다.
+5) pq에 값이 한 개 남을 때 까지 가장 작은 것들을 빼고 빠진 우선순위 큐에서 다시 또 빼서 가장 작은 값 2개를 고른다.
+6) 위에서 뽑은 두 개를 a, b라 한 뒤 result += a+b를 한 뒤 다시 a+b를 우선순위 큐에 넣는다.
+7) while문이 끝난 뒤 result를 출력한다.
+
 '''
+import heapq
 
 N = int(input())
 
 nums = list(map(int, input().split()))
 
-nums.sort(reverse=True)
-
-min_check = 0
-
+pq = []
 result = 0
-while nums:
 
-    a = nums.pop()
+for elem in nums:
+    heapq.heappush(pq, elem)
 
-    if nums:
-        if min_check == 0:
-            b = nums.pop()
-            min_check = a+b
-        
-        else:
-            if min_check > nums[-1]:
-                b = nums.pop()
-                min_check = a+b
-            else:
-                b = min_check
-                min_check += a
-    else:
-        b = min_check
-        result += a+b
-        break
-    
-    result += a+b
+while len(pq) != 1:
+    a = heapq.heappop(pq)
+    b = heapq.heappop(pq)
+
+    result += (a + b)
+    heapq.heappush(pq, a + b)
 
 print(result)
