@@ -18,14 +18,36 @@ N = int(input())
 
 nums = list(map(int, input().split()))
 
-min_result = 0
-while len(nums) != 1:
-    nums.sort(reverse=True)
+nums.sort(reverse=True)
+
+min_check = 0
+
+result = 0
+while nums:
 
     a = nums.pop()
-    b = nums.pop()
 
-    min_result += a+b
-    nums.append(a+b)
+    if nums:
+        if min_check == 0:
+            b = nums.pop()
+        
+        else:
+            if min_check > nums[-1]:
+                b = nums.pop()
+            else:
+                b = min_check
+                min_check += a
+    else:
+        b = min_check
+        result += a+b
+        break
+    
+    result += a+b
 
-print(min_result)
+    if min_check == 0:
+        min_check = a+b
+    else:
+        if min_check > a+b:
+            min_check = a+b
+    
+print(result)
