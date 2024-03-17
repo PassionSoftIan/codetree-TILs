@@ -19,9 +19,9 @@ N = int(input())
 
 nums = list(map(int, input().split()))
 
-max_result = 0
+max_result = -1000 * N
 
-temp_result = -int(1e9)
+temp_result = 0
 for i in range(N):
     temp_result += nums[i]
     max_result = max(max_result, temp_result)
