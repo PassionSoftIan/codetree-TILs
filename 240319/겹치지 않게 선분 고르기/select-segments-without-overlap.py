@@ -19,7 +19,7 @@
 def find_combination(depth):
     global max_result
 
-    if depth != 0 and max_result == depth:
+    if max_result == N:
         return
 
     if depth > N:
@@ -49,7 +49,7 @@ N = int(input())
 
 line_segments = [list(map(int, input().split())) for _ in range(N)]
 
-max_result = 0
+max_result = -1
 
 lines = []
 
