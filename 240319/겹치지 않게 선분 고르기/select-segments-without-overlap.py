@@ -19,6 +19,9 @@
 def find_combination(depth):
     global max_result
 
+    if max_result == N:
+        return
+
     if depth > N:
         return
 
