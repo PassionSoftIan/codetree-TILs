@@ -39,6 +39,8 @@ def find_combination(depth):
 
 
     for i in range(N):
+        if i in lines:
+            continue
         lines.append(i)
         find_combination(depth + 1)
         lines.pop()
