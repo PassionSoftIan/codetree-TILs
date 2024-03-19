@@ -31,7 +31,7 @@ B_card = 0
 for i in range(1, (2*N)+1):
     if B_cards_seq[B_card] < i:
         B_card += 1
-    if B_card == (N//2)+1:
+    if B_card == N+1:
         break
 
 print(B_card)
