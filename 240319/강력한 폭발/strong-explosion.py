@@ -14,39 +14,14 @@
 '''
 
 
-def bomb_1(y, x, visited):
-    direction = [(0, 0), (-1, 0), (-2, 0), (1, 0), (2,0)]
+def bomb_check(bomb_num, y, x, visited):
+    direction = [[(0, 0), (-1, 0), (-2, 0), (1, 0), (2,0)], [(0, 0), (0, 1), (1, 0), (0, -1), (-1,0)], [(0, 0), (1, 1), (1, -1), (-1, -1), (-1,1)]]
 
     for i in range(5):
-        n, m = direction[i]
+        n, m = direction[bomb_num - 1][i]
         ny, nx = n+y, x+m
         if 0 <= ny < N and 0 <= nx < N:
             visited[y+n][x+m] = 1
-
-    return visited
-
-
-def bomb_2(y, x, visited):
-    direction = [(0, 0), (0, 1), (1, 0), (0, -1), (-1,0)]
-
-    for i in range(5):
-        n, m = direction[i]
-        ny, nx = n+y, x+m
-        if 0 <= ny < N and 0 <= nx < N:
-            visited[y+n][x+m] = 1
-
-    return visited
-
-
-def bomb_3(y, x, visited):
-    direction = [(0, 0), (1, 1), (1, -1), (-1, -1), (-1,1)]
-
-    for i in range(5):
-        n, m = direction[i]
-        ny, nx = n+y, x+m
-        if 0 <= ny < N and 0 <= nx < N:
-            visited[y+n][x+m] = 1
-
 
     return visited
 
@@ -58,14 +33,8 @@ def explosion(depth):
         visited = [[0] * N for _ in range(N)]
         for j in range(len(bombsite)):
             n, m = bombsite[j]
-            if bomb[j] == 1:
-                visited = bomb_1(n, m, visited)
-            
-            if bomb[j] == 2:
-                visited = bomb_2(n, m, visited)
-
-            if bomb[j] == 3:
-                visited = bomb_3(n, m, visited)
+            bomb_num = bomb[j]
+            visited = bomb_check(bomb_num, n, m, visited)
         
         result = 0
         for i in range(N):
