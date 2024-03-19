@@ -40,17 +40,18 @@ scores = []
 
 max_result = 0
 result = 0
-while idx != N+1:
+while max_time != 0:
     if idx == N:
         if scores:
             max_result += -heapq.heappop(scores)
-            break
+        max_time -= 1
+        continue
     if bombs_info[idx][1] >= max_time:
         heapq.heappush(scores, -bombs_info[idx][0])
         idx += 1
-    else:
-        if scores:
-            max_result += -heapq.heappop(scores)
-        max_time -= 1
+        continue
+    if scores:
+        max_result += -heapq.heappop(scores)
+    max_time -= 1
 
 print(max_result)
