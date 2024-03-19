@@ -13,10 +13,10 @@
 1- 내 풀이(N)
 
 1) B_cards_seq 배열을 만든다.
-2) B 카드 정보를 저장한다.
-3) B_cards_seq를 순회하며 처음 1이 나온 시점 이후 0인 칸을 전부 센다(result+=1)
-4) result를 출력한다
-
+2) B 카드 정보를 1로 저장한다.
+3) for i in range(1, (N*2)+1)를 순회하며 1이 나오면 B_count += 1을 한다.
+4) 만약 B_count != 이라면 result += 1을 한다.
+5) result를 출력한다.
 '''
 
 
@@ -29,11 +29,16 @@ for _ in range(N):
 
 result = 0
 
-bit = 0
+B_count = 0
 for i in range(1, (2*N)+1):
+    if B_count == 0 and B_cards_seq[i] == 0:
+        continue
+
     if B_cards_seq[i] == 1:
-        bit = 1
-    if bit == 1 and B_cards_seq[i] == 0:
+        B_count += 1
+
+    if B_count != 0 and B_cards_seq[i] == 0:
         result += 1
+        B_count -= 1
 
 print(result)
