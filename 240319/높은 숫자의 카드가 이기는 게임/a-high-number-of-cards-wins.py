@@ -12,26 +12,28 @@
 
 1- 내 풀이(N)
 
-1) B_cards_seq를 정렬한다.
-2) 비교할 카드를 정하고 시작점은 0번 인덱스로 하여 B_card = 0을 만든다.
-3) for i in range(1, (2*N) + 1)를 반복하면서 B_cards_seq[B_card]와 비교한다.
-4) i가 크다면 B_cards_seq += 1을 한다.
-5) 반복문이 끝난 뒤 B_card를 출력한다.
+1) B_cards_seq 배열을 만든다.
+2) B 카드 정보를 저장한다.
+3) B_cards_seq를 순회하며 처음 1이 나온 시점 이후 0인 칸을 전부 센다(result+=1)
+4) result를 출력한다
 
 '''
 
 
 N = int(input())
 
-B_cards_seq = [ int(input()) for _ in range(N)] 
+B_cards_seq = [0] * ((2*N)+1)
 
-B_cards_seq.sort()
+for _ in range(N):
+    B_cards_seq[int(input())] = 1
 
-B_card = 0
+result = 0
+
+bit = 0
 for i in range(1, (2*N)+1):
-    if B_cards_seq[B_card] < i:
-        B_card += 1
-    if B_card == N:
-        break
+    if B_cards_seq[i] == 1:
+        bit = 1
+    if bit == 1 and B_cards_seq[i] == 0:
+        result += 1
 
-print(B_card)
+print(result)
