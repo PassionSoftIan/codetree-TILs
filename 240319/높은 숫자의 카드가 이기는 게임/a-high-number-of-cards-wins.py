@@ -29,7 +29,7 @@ B_cards_seq.sort()
 
 B_card = 0
 for i in range(1, (2*N)+1):
-    if i not in B_cards_seq and B_cards_seq[B_card] < i:
+    if B_cards_seq[B_card] < i:
         B_card += 1
 
 print(B_card)
