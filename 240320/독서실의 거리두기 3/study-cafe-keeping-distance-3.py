@@ -35,7 +35,7 @@ for i in range(N):
         else:    
             temp_count += 1
 
-seat[start + end//2] = 1
+seat[(start + end)//2] = 1
 
 max_dist = 0
 temp_dist = 0
