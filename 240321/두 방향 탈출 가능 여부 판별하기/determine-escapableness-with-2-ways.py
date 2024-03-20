@@ -21,21 +21,22 @@ dx = [1, 0]
 
 def DFS(n, m):
 
-    if n == N-1 and m == M-1 and arr[n][m] == 0:
-        return print(1)
+    if n == N-1 and m == M-1 and arr[n][m] == 1:
+        print(1)
+        exit()
     
     for k in range(2):
         ny, nx = n + dy[k], m + dx[k]
         if 0 <= ny < N and 0 <= nx < M:
-            if arr[ny][nx] != 0:
+            if arr[ny][nx] == 1:
                 DFS(ny, nx)
 
-
-    return print(0)
+    print(0)
+    exit()
 
 
 N, M = map(int, input().split())
 
-arr = [[0] * M for _ in range(N)]
+arr = [list(map(int, input().split())) for _ in range(N)]
 
-DFS(0,0)
+DFS(0, 0)
