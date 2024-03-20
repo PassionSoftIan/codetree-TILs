@@ -18,29 +18,21 @@
 dy = [0, 1]
 dx = [1, 0]
 
-
-def DFS(n, m):
-
-    if n == N-1 and m == M-1 and arr[n][m] == 1:
-        print(1)
-        exit()
-    
-    for k in range(2):
-        ny, nx = n + dy[k], m + dx[k]
-        if 0 <= ny < N and 0 <= nx < M:
-            if arr[ny][nx] == 1 and visited[ny][nx] == 0:
-                visited[ny][nx] = 1
-                DFS(ny, nx)
-
-    print(0)
-    exit()
-
-
 N, M = map(int, input().split())
 
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-visited = [[0] * M for _ in range(N)]
+visited = [[0]*M for _ in range(N)]
 
-visited[0][0] = 1
-DFS(0, 0)
+stack = [[0, 0]]
+while stack:
+    n, m = stack.pop()
+    
+    for k in range(2):
+        ny, nx = n + dy[k], m + dx[k]
+        if 0 <= ny < N and 0 <= nx < M:
+            if arr[ny][nx] == 1:
+                visited[ny][nx] = 1
+                stack.append([ny, nx])
+
+print(visited[N-1][M-1])
