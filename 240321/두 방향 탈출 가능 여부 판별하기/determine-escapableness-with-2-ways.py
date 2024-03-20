@@ -42,4 +42,5 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 
 visited = [[0] * M for _ in range(N)]
 
+visited[0][0] = 1
 DFS(0, 0)
