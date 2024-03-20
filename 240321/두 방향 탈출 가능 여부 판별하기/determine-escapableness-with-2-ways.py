@@ -21,7 +21,7 @@ dx = [1, 0]
 
 def DFS(n, m):
 
-    if n == N-1 and m == m-1:
+    if n == N-1 and m == m-1 and arr[n][m] == 0:
         return print(1)
     
     for k in range(2):
