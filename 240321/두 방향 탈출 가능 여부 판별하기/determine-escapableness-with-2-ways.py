@@ -27,11 +27,10 @@ visited = [[0]*M for _ in range(N)]
 stack = [[0, 0]]
 while stack:
     n, m = stack.pop()
-    
     for k in range(2):
         ny, nx = n + dy[k], m + dx[k]
         if 0 <= ny < N and 0 <= nx < M:
-            if arr[ny][nx] == 1:
+            if arr[ny][nx] == 1 visited[ny][nx] == 0:
                 visited[ny][nx] = 1
                 stack.append([ny, nx])
 
