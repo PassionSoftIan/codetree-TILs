@@ -37,19 +37,13 @@ for i in range(N):
 
 seat[(start + end)//2] = 1
 
-max_dist = 0
+min_dist = 1001
 temp_dist = 0
-for i in range(N):
-    if seat[j] == 1:
-        if temp_dist == 0:
-            temp_dist = 1   
-        else:
-            temp_dist += 1
-            if max_dist < temp_dist:
-                max_dist = temp_dist
-            temp_dist = 0
+for i in range(1, N):
+    temp_dist += 1
+    if seat[i] == 1:
+        if min_dist > temp_dist:
+            min_dist = temp_dist
+        temp_dist = 0
 
-    else:    
-        temp_dist += 1
-
-print(max_dist)
+print(min_dist)
