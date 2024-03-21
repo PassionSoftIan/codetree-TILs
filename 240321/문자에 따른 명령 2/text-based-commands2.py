@@ -9,8 +9,8 @@
 
 1- 내 풀이
 
-1) dy, dx를 [동, 남, 서, 북] 으로 생성.
-2) 초기 방향 direction = 3 (북)으로 생성.
+1) dy, dx를 [북, 동, 남, 서] 으로 생성.
+2) 초기 방향 direction = 0 (북)으로 생성.
 3) L일 경우 direction = (direction + 3) % 4
 4) R일 경우 direction = (direction + 1) % 4
 5) F일 경우 y = y + dy[direction], x = x + dx[direction]
@@ -18,14 +18,14 @@
 
 '''
 
-dy = [0, 1, 0, -1]
-dx = [1, 0, -1, 0]
+dy = [-1, 0, 1, 0]
+dx = [0, 1, 0, -1]
 
 commands = list(map(str, input()))
 
 y, x = 0, 0
 
-direction = 3
+direction =0
 for command in commands:
     if command == 'L':
         direction = (direction + 3) % 4
