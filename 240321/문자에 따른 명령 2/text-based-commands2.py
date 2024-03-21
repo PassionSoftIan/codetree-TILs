@@ -14,7 +14,7 @@
 3) L일 경우 direction = (direction + 3) % 4
 4) R일 경우 direction = (direction + 1) % 4
 5) F일 경우 y = y + dy[direction], x = x + dx[direction]
-6) print(y, x)
+6) print(x, y)
 
 '''
 
