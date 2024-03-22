@@ -6,7 +6,10 @@
 5. 식의 결과를 최대로 한다.
 6. 사칙연산은 우선순위가 없이 순서대로 간다.
 
+1- 내 풀이
 
+1) 알파벳 a ~ f까지 1부터 4를 배당한다.
+2) 알파벳에 맞는 숫자와 사칙연산을 진행한다.
 '''
 
 
@@ -15,18 +18,17 @@ def calculator(depth):
 
     if depth == 7:
         result = numbers[alphabet[commands[0]]]
-        for command in range(1, N):
-            if commands[command] in cal:
-                operator = commands[command]
-
+        for check in range(1, N-1):
+            if commands[check] in cal:
+                operator = commands[check]
                 if operator == '+':
-                    result += numbers[alphabet[commands[command+1]]]
+                    result += numbers[alphabet[commands[check+1]]]
 
                 if operator == '-':
-                    result -= numbers[alphabet[commands[command+1]]]
+                    result -= numbers[alphabet[commands[check+1]]]
 
                 if operator == '*':
-                    result *= numbers[alphabet[commands[command+1]]]
+                    result *= numbers[alphabet[commands[check+1]]]
         
         max_result = max(max_result, result)
         return
@@ -54,7 +56,7 @@ cal = ['+', '-', '*']
 
 numbers = []
 
-max_result = 0
+max_result = -(int(2**31))
 
 calculator(0)
 
