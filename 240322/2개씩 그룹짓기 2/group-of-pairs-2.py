@@ -8,8 +8,10 @@
 1- 내 풀이
 
 1) 내림차순으로 정렬한다.
-2) 가장 가운데 두 수의 차이가 가장 작은 수.
-3) 출력
+2) 큰 그룹과 작은 그룹 반반 나눈다.
+3) 큰 그룹과 작은 그룹을 순서대로 짝 지으며 차를 구한다.
+4) min_result와 비교하여 작으면 갱신한다.
+5) min_result 출력.
 '''
 
 N = int(input())
@@ -18,4 +20,8 @@ numbers = list(map(int, input().split()))
 
 numbers.sort(reverse=True)
 
-print(numbers[N//2 - 1] - numbers[N//2])
+min_result = 1000000000
+for i in range(N):
+    min_result = min(min_result, numbers[i] - numbers[i+N])
+
+print(min_result)
