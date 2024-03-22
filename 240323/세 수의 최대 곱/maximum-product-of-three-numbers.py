@@ -29,6 +29,37 @@ minus_lst.sort()
 
 max_result = -(100000**3)
 
-max_result = max(max_result, plus_lst[0]*plus_lst[1]*plus_lst[2], minus_lst[0]*minus_lst[1]*plus_lst[0])
+plus_result = 0
+plus_count = 0
+for i in range(len(plus_lst)):
+    if i == 0:
+        plus_result = plus_lst[i]
+        plus_count += 1
+    else:
+        plus_result = plus_result*plus_lst[i]
+        plus_count += 1
+    
+    if plus_count == 3:
+        break
+
+minus_result = 0
+minus_count = 0
+for i in range(len(minus_lst)):
+    if i == 0:
+        minus_result = minus_lst[i]
+        minus_count += 1
+    else:
+        if minus_count != 2:
+            minus_result = minus_result*minus_lst[i]
+            minus_count += 1
+        else:
+            if plus_lst:
+                minus_result = minus_result*plus_lst[0]
+            minus_count += 1
+    
+    if minus_count == 3:
+        break
+
+max_result = max(max_result, plus_result, minus_result)
 
 print(max_result)
