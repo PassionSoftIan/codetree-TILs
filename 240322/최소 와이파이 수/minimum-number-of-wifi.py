@@ -12,11 +12,10 @@
 1- 내 풀이
 
 1) 최소 와이파이 수를 나타낼 min_count = 0 생성.
-2) for i in range(N) 순회하며 사람이 있으면 person += 1을 한다.
-3) person 숫자가 M과 같으면 와이파이를 설치한다. min_count += 1
-4) person 숫자를 초기화한다.
-5) min_count를 출력한다.
-
+2) 첫 idx = 0부터 탐색을 한다.
+3) 사람이 살고있는 곳이 나오면 해당 사람까지 커버할 수 있는 가장 먼 곳(현재 에서  += M)에 설치한다.
+4) 해당 와이파이가 커버하지 못하는 지역 부터 다시 탐색한다.(2*M + 1)
+5) 설치된 와이파이를 개수를 출력한다.
 '''
 
 N, M = map(int, input().split())
@@ -24,16 +23,13 @@ N, M = map(int, input().split())
 people = list(map(int, input().split()))
 
 min_count = 0
-person = 0
-for i in range(N):
-    if people[i] == 1:
-        person += 1
-    
-    if person == M+1:
-        min_count += 1
-        person = 0
+idx = 0
 
-    if i == N-1 and person != 0:
-        min_count + 1
+while i < N:
+    if arr[i] == 1:
+        min_count += 1
+        idx += M*2 + 1
+    else:
+        idx += 1
 
 print(min_count)
