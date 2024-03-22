@@ -9,8 +9,6 @@
 1) 플러스인 숫자와 마이너스인 숫자로 나눈다.
 2) 플러스인 숫자 리스트에서 가장 큰 세 숫자를 곱한다.
 3) 마이너스인 숫자 중 가장 작은 값 두 개를 곱한 뒤 플러스에서 가장 큰 숫자를 곱한다.
-
-
 '''
 
 N = int(input())
@@ -25,6 +23,9 @@ for i in range(N):
         minus_lst.append(numbers[i])
     else:
         plus_lst.append(numbers[i])
+
+plus_lst.sort(reverse=True)
+minus_lst.sort()
 
 max_result = -(100000**3)
 
