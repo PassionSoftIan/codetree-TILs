@@ -25,7 +25,7 @@ people = list(map(int, input().split()))
 min_count = 0
 idx = 0
 
-while i < N:
+while idx < N:
     if arr[i] == 1:
         min_count += 1
         idx += M*2 + 1
