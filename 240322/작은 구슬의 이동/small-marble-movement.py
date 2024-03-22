@@ -44,11 +44,11 @@ for i in range(T):
     else:
         if direction == 'R':
             direction = 'L'
-        if direction == 'L':
+        elif direction == 'L':
             direction = 'R'
-        if direction == 'D':
+        elif direction == 'D':
             direction = 'U'
-        if direction == 'U':
+        elif direction == 'U':
             direction = 'D'
 
 print(y, x)
