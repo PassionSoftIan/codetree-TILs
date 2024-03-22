@@ -38,7 +38,7 @@ direction_dict = {
 for i in range(T):
     way = direction_dict[direction]
     ny, nx = y + dy[way], x + dx[way]
-    if 1 <= ny < N and 1 <= nx < N:
+    if 1 <= ny <= N and 1 <= nx <= N:
         y = ny
         x = nx
     else:
