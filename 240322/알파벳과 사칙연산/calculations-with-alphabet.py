@@ -10,46 +10,52 @@
 '''
 
 
-def calculator(depth, result):
+def calculator(depth):
     global max_result
 
-    if depth == N//2+2:
+    if depth == 7:
+        result = numbers[alphabet[commands[0]]]
+        for command in range(1, N):
+            if commands[command] in cal:
+                operator = commands[command]
+
+                if operator == '+':
+                    result += numbers[alphabet[commands[command+1]]]
+
+                if operator == '-':
+                    result -= numbers[alphabet[commands[command+1]]]
+
+                if operator == '*':
+                    result *= numbers[alphabet[commands[command+1]]]
+        
         max_result = max(max_result, result)
         return
-
-    if depth == 1:
-        result = numbers[0]
-
-    if depth >= 2:
-        operation = cal[depth-2]
-
-        if operation == '+':
-            result += numbers[depth-1]
-
-        elif operation == '-':
-            result -= numbers[depth-1]
-
-        elif operation == '*':
-            result *= numbers[depth-1]
+        
 
     for i in range(1, 5):
         numbers.append(i)
-        calculator(depth+1, result)
+        calculator(depth+1)
         numbers.pop()
 
 commands = list(map(str, input()))
 
 N = len(commands)
 
-cal = []
+alphabet = {
+    'a': 0,
+    'b': 1, 
+    'c': 2, 
+    'd': 3, 
+    'e': 4, 
+    'f': 5
+    }
 
-for i in range(1, N, 2):
-    cal.append(commands[i])
+cal = ['+', '-', '*']
 
 numbers = []
 
 max_result = 0
 
-calculator(0, 0)
+calculator(0)
 
 print(max_result)
