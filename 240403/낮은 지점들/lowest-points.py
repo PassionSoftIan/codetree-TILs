@@ -11,20 +11,15 @@
 
 N = int(input())
 
-coordinate_list = [-1000000001] * (N+1)
+coordinate_list = {}
 
 for i in range(N):
     x, y = map(int ,input().split())
 
-    if coordinate_list[x] == -1000000001:
+    if x not in coordinate_list:
         coordinate_list[x] = y
     
     else:
         coordinate_list[x] = min(coordinate_list[x], y)
 
-max_result = 0 
-for i in range(N+1):
-    if coordinate_list[i] != -1000000001:
-        max_result += coordinate_list[i]
-
-print(max_result)
+print(sum(coordinate_list.values()))
