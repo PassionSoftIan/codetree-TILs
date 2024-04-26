@@ -8,9 +8,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
 
-        a+=2;
+        a;
 
-        System.out.print(a);
+        System.out.print(a+2);
 
 
     }
