@@ -4,7 +4,7 @@ class Spy:
     def __init__(self, code, place, time):
         self.code = code
         self.place = place
-        self.place = time
+        self.time = time
 
 spy1 = Spy(code, place, time)
 
