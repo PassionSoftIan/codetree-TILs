@@ -27,7 +27,7 @@ for i in range(N):
         if i == N-1:
             continue
         
-        if arr[j][i] == arr[j][i+1]:
+        if arr[j+1][i] == arr[j][i]:
             temp += 1
         else:
             temp = 1
