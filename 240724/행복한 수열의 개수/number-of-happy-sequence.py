@@ -24,7 +24,7 @@ for i in range(N):
         if temp >= M:
             count += 1
             break
-        if i == N-1:
+        if j == N-1:
             continue
         
         if arr[j+1][i] == arr[j][i]:
