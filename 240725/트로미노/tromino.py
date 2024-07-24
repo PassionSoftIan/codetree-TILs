@@ -51,7 +51,7 @@ def left(n, m):
         if i == 0:
             temp_re_nieun += arr[n][m]
         
-        elif i == 1 and n + 1 < M:
+        elif i == 1 and n + 1 < N:
             temp_re_nieun += arr[n+1][m]
         
         elif i == 2 and (n + 1 < N and m - 1 >= 0):
