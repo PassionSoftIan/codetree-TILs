@@ -1,6 +1,6 @@
 N = int(input())
 
-arr = [0] * 100
+arr = [0] * 101
 
 for i in range(N):
     s, e = map(int, input().split())
