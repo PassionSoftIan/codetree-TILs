@@ -14,7 +14,7 @@ for i in range(N):
         start += go
 
     if cmd == 'L':
-        for j in range(go):
+        for j in range(1, go+1):
             arr[start - j] += 1
         start -= go
 
