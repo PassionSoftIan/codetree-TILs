@@ -15,9 +15,9 @@
 
 N = int(input())
 
-arr = [[0, 0, 0] for _ in range(50)]
+arr = [[0, 0, 0] for _ in range(100001)]
 
-start = 25
+start = 100002 // 2
 
 w = 0
 b = 0
@@ -31,12 +31,12 @@ for i in range(N):
         for j in range(go):
             if arr[start + j][2] == 3:
                 continue
-            if arr[start + j][0] >= 2 and arr[start +j][1] >= 1:
-                arr[start + j][2] = 3
+            if arr[start + j][0] >= 2 and arr[start + j][1] >= 1:
                 if arr[start + j][2] == 2:
                     b -= 1
                 else:
                     w -= 1
+                arr[start + j][2] = 3
                 g += 1
             elif arr[start + j][2] == 1:
                 arr[start + j][2] = 2
@@ -59,11 +59,11 @@ for i in range(N):
             if arr[start - j][2] == 3:
                 continue
             if arr[start - j][0] >= 1 and arr[start - j][1] >= 2:
-                arr[start - j][2] = 3
                 if arr[start - j][2] == 1:
                     w -= 1
                 else:
                     b -= 1
+                arr[start - j][2] = 3
                 g += 1
             elif arr[start - j][2] == 2:
                 arr[start - j][2] = 1
@@ -76,7 +76,7 @@ for i in range(N):
 
             else:
                 arr[start - j][2] = 1
-                arr[start - j][1] += 1
+                arr[start - j][0] += 1
                 w += 1
         
         start -= (go-1)
