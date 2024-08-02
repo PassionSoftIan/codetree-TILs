@@ -34,7 +34,7 @@ for i in range(M):
     start_B = start_B + t
 
 for i in range(1, 1001):
-    if A[i] == B[i]:
+    if A[i] == B[i] and A[i] != 0 and B[i] != 0:
         print(i)
         break
 
