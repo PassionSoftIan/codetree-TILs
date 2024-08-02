@@ -1,7 +1,7 @@
 N, M = map(int, input().split())
 
-A = [-100000] * 1000000
-B = [-100000] * 1000000
+A = [-100001] * 1000001
+B = [-100001] * 1000001
 
 start_A = 1
 for i in range(N):
@@ -34,7 +34,7 @@ for i in range(M):
     start_B = start_B + t
 
 for i in range(1, 1001):
-    if A[i] == B[i] and (A[i] != -100000 and B[i] != -100000):
+    if A[i] == B[i] and (A[i] != -100001 and B[i] != -100001):
         print(i)
         break
 
