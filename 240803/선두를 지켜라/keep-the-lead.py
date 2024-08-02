@@ -34,7 +34,6 @@ while True:
         B_check = B[check]
         break
     check += 1
-print()
 
 for i in range(2, 1000001):
     if A[i] == 0 or B[i] == 0:
