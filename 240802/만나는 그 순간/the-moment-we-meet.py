@@ -1,7 +1,7 @@
 N, M = map(int, input().split())
 
-A = [0] * 1002
-B = [0] * 1002
+A = [0] * 10000
+B = [0] * 10000
 
 start_A = 1
 for i in range(N):
