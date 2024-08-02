@@ -33,7 +33,7 @@ for i in range(M):
     
     start_B = start_B + t
 
-for i in range(1, 1001):
+for i in range(1, 1000001):
     if A[i] == B[i] and (A[i] != -100001 and B[i] != -100001):
         print(i)
         break
