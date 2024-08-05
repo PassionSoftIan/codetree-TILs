@@ -9,7 +9,7 @@ for i in range(1, N-2):
             continue
         for k in range(i+1, N-1):
             for l in range(j+1, M-1):
-                if arr[i][j] == arr[k][l]:
+                if arr[i][j] == arr[k][l] and arr[k][l] != arr[N-1][M-1]:
                     continue
                 count += 1
 
