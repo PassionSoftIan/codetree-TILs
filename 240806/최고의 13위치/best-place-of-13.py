@@ -8,7 +8,7 @@ for i in range(N):
     for j in range(N-2):
         count = 0
         for k in range(3):
-            if arr[i][k] == 1:
+            if arr[i][j+k] == 1:
                 count += 1
         max_count = max(max_count, count)
 
