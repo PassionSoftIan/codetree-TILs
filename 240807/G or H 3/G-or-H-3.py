@@ -12,15 +12,9 @@ N, K = map(int, input().split())
 
 arr = [0] * 10001
 
-start =10001
-end = 0
-
 for i in range(N):
     location, alphabet = map(str, input().split())
     location = int(location)
-
-    start = min(start, location)
-    end = max(end, location)
 
     if alphabet == 'G':
         arr[location] = 1
