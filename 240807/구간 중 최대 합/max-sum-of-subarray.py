@@ -4,7 +4,7 @@ arr = list(map(int, input().split()))
 
 max_count = 0
 
-for i in range(N-K):
+for i in range(N-K+1):
     count = 0
     for j in range(K):
         count += arr[i+j]
