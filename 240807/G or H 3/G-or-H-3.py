@@ -29,7 +29,7 @@ for i in range(N):
         arr[location] = 2
 
 max_count = 0
-for i in range(start, end - K + 3):
+for i in range(start, end - K):
     count = 0
     for j in range(K+1):
         count += arr[i + j]
