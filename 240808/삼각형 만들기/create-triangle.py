@@ -22,7 +22,7 @@ for i in range(N-2):
             if x1 == x3 and y1 != y3:
                 height = abs(y3 - y1)
             
-            if y1 == y3 and x1 != x2:
+            if y1 == y3 and x1 != x3:
                 col = abs(x3 - x1)
 
             if x2 == x3 and y2 != y3:
