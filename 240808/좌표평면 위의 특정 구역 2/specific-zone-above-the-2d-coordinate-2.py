@@ -2,7 +2,7 @@ N = int(input())
 
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-min_result = 1e9
+min_result = 1600000001
 for i in range(N):
     min_x = 1e9
     max_x = 0
