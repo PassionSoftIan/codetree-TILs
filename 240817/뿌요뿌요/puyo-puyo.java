@@ -64,9 +64,9 @@ public class Main {
                     temp_count = 0;
                     DFS(i, j);
                     if (temp_count >= 4) {
-                        max_block_size = Math.max(max_block_size, temp_count);
                         block_count++;
                     }
+                    max_block_size = Math.max(max_block_size, temp_count);
                 }
             }
         }
