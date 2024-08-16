@@ -13,7 +13,7 @@ N, M = map(int, input().split())
 
 edge = [[] for _ in range(N+1)]
 
-visited = [0] * N
+visited = [0] * (N+1)
 
 count = 0
 
