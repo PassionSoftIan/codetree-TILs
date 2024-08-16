@@ -12,7 +12,7 @@ public class Main {
 
     public static boolean[][] visited;
 
-    public static int max_count = 0;
+    public static int max_count = -1;
 
     public static int max_K = 0;
 
