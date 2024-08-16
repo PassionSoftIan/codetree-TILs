@@ -11,30 +11,17 @@ public class Main {
 
     public static void backTracking(int depth) {
         if (depth == N) {
-            check = 1;
-            for (int i = 0; i < N - 1; i++) {
-                if (result.get(i) == result.get(i+1)) {
-                    check++;
-                }
-                else {
-                    check = 1;
-                }
-                if(check == 3) {
-                    break;
-                }
+            for (int i = 0; i < N; i++) {
+                System.out.print(result.get(i) + " ");
             }
-
-            if (check < 3) {
-                for (int i = 0; i < N; i++) {
-                    System.out.print(result.get(i) + " ");
-                }
-                System.out.println();
-                return;
-            }
+            System.out.println();
             return;
         }
 
         for (int i = 1; i <= K; i++) {
+            if (result.size() >= 2 && i == result.get(result.size() - 1) && i == result.get(result.size() - 2)) {
+                continue;
+            }
             result.add(i);
             backTracking(depth+1);
             result.remove(result.size() - 1);
