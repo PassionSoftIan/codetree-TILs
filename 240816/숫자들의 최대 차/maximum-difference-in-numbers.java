@@ -16,12 +16,12 @@ public class Main {
 
         int max_count = 0;
         for (int i = 0; i < N; i++) {
-            int count = 0;
+            int count = 1;
             for (int j = 0; j < N; j++) {
                 if (i == j) {
                     continue;
                 }
-                if (Math.abs(arr[i] - arr[j]) <= K) {
+                if (Math.abs(arr[i] - arr[j]) <= K && arr[i] >= arr[j]) {
                     count++;
                 }
             }
