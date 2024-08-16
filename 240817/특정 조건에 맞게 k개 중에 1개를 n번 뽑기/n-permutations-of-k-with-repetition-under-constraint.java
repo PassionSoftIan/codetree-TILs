@@ -19,7 +19,7 @@ public class Main {
         }
 
         for (int i = 1; i <= K; i++) {
-            if (result.size() >= 2 && i == result.get(result.size() - 1) && i == result.get(result.size() - 2)) {
+            if (depth >= 2 && i == result.get(result.size() - 1) && i == result.get(result.size() - 2)) {
                 continue;
             }
             result.add(i);
