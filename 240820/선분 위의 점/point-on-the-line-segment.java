@@ -7,23 +7,55 @@ public class Main {
 
     public static int[] arr;
 
-    public static int find(int left, int right, int target) {
+    public static int left;
+    public static int right;
+
+    public static int upperBound(int target) {
+
+        left = 0;
+        right = N - 1;
+
+        int minIdx = N;
+
         while (left <= right) {
 
             int mid = (left + right) / 2;
 
-            if (mid == target) {
-                return 1;
-            }
-            else if (mid < target) {
-                left = mid + 1;
-            }
-            else {
+            if (arr[mid] > target) {
                 right = mid - 1;
+                minIdx = Math.min(minIdx, mid);
+            }
+
+            else {
+                left = mid + 1;
             }
 
         }
-        return 0;
+        return minIdx;
+    }
+
+    public static int lowerBound(int target) {
+
+        left = 0;
+        right = N - 1;
+
+        int minIdx = N;
+
+        while (left <= right) {
+
+            int mid = (left + right) / 2;
+
+            if (arr[mid] >= target) {
+                right = mid - 1;
+                minIdx = Math.min(minIdx, mid);
+            }
+
+            else {
+                left = mid + 1;
+            }
+
+        }
+        return minIdx;
     }
 
     public static void main(String[] args) {
@@ -36,6 +68,8 @@ public class Main {
 
         arr = new int[N];
 
+        Arrays.sort(arr, 0, N);
+
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
         }
@@ -44,12 +78,7 @@ public class Main {
             int l = sc.nextInt();
             int r = sc.nextInt();
 
-            int count = 0;
-            for (int j = 0; j < N; j++) {
-                int dot = arr[j];
-                count += find(l, r, dot);
-            }
-            System.out.println(count);
+            System.out.println(upperBound(r) - lowerBound(l));
         }
     }
 }
