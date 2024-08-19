@@ -68,11 +68,11 @@ public class Main {
 
         arr = new int[N];
 
-        Arrays.sort(arr, 0, N);
-
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
         }
+
+        Arrays.sort(arr, 0, N);
 
         for (int i = 0; i < M; i++) {
             int l = sc.nextInt();
