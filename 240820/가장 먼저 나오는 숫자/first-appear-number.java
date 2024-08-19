@@ -25,7 +25,7 @@ public class Main {
             }
         }
 
-        if (arr[minIdx] != target) {
+        if (arr[minIdx] != target || minIdx < 0 || minIdx >= N) {
             System.out.println(-1);
         }
         else {
