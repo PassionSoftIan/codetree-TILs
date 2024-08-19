@@ -18,8 +18,8 @@ public class Main {
 
             if (arr[mid] >= target) {
                 right = mid - 1;
-                // minIdx = Math.min(minIdx, mid);
-                minIdx = mid;
+                minIdx = Math.min(minIdx, mid);
+                // minIdx = mid;
 
             }
             else {
@@ -42,8 +42,8 @@ public class Main {
 
             if (arr[mid] > target) {
                 right = mid - 1;
-                // minIdx = Math.min(minIdx, mid);
-                minIdx = mid;
+                minIdx = Math.min(minIdx, mid);
+                // minIdx = mid;
             }
             else {
                 left = mid + 1;
