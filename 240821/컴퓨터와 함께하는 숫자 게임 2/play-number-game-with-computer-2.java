@@ -9,7 +9,7 @@ public class Main {
     public static int minCount = 19;
     public static int maxCount = 0;
 
-    public static void find(int target) {
+    public static void find(long target) {
         long left = 1;
         long right = M;
 
