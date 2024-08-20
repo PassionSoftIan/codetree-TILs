@@ -2,23 +2,23 @@ import java.util.*;
 
 public class Main {
 
-    public static int M;
+    public static long M;
     public static int a;
     public static int b;
 
-    public static long minCount = 1000000000000000001L;
+    public static int minCount = 19;
     public static int maxCount = 0;
 
     public static void find(int target) {
-        int left = 1;
-        int right = M;
+        long left = 1;
+        long right = M;
 
         int count = 0;
 
         while (left <= right) {
             count++;
 
-            int mid = (left + right) / 2;
+            long mid = (left + right) / 2;
 
             if (target == mid) {
                 minCount = Math.min(count, minCount);
@@ -39,7 +39,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        M = sc.nextInt();
+        M = sc.nextLong();
 
         a = sc.nextInt();
         b = sc.nextInt();
