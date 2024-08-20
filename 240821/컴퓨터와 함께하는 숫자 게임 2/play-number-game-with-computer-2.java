@@ -4,7 +4,7 @@ public class Main {
 
     public static long M;
     public static int a;
-    public static int b;
+    public static long b;
 
     public static int minCount = 19;
     public static int maxCount = 0;
@@ -42,7 +42,7 @@ public class Main {
         M = sc.nextLong();
 
         a = sc.nextInt();
-        b = sc.nextInt();
+        b = sc.nextLong();
 
         for (int i = a; i <= b; i++) {
             find(i);
