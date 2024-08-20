@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 
     public static long M;
-    public static int a;
+    public static long a;
     public static long b;
 
     public static int minCount = 19;
@@ -41,7 +41,7 @@ public class Main {
 
         M = sc.nextLong();
 
-        a = sc.nextInt();
+        a = sc.nextLong();
         b = sc.nextLong();
 
         for (int i = a; i <= b; i++) {
