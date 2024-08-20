@@ -6,7 +6,7 @@ public class Main {
     public static long a;
     public static long b;
 
-    public static int minCount = 19;
+    public static long minCount = 1000000000000000001L;
     public static int maxCount = 0;
 
     public static void find(long target) {
