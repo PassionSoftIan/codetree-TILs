@@ -6,7 +6,7 @@ public class Main {
     public static int a;
     public static int b;
 
-    public static long minCount = (long) Math.pow(10, 18) + 1;
+    public static long minCount = 1000000000000000001L;
     public static int maxCount = 0;
 
     public static void find(int target) {
