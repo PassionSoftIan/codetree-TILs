@@ -44,7 +44,7 @@ public class Main {
         a = sc.nextLong();
         b = sc.nextLong();
 
-        for (int i = a; i <= b; i++) {
+        for (long i = a; i <= b; i++) {
             find(i);
         }
         System.out.print(minCount + " " + maxCount);
