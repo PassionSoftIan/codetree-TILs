@@ -27,7 +27,7 @@ public class Main {
         for (int i = 0; i < M; i++) {
             int check = sc.nextInt();
             if (!nums.containsKey(check)) {
-                System.out.print(0);
+                System.out.print(0 + " ");
             }
             else {
                 System.out.print(nums.get(check) + " ");
