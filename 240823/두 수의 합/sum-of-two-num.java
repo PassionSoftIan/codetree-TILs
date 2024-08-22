@@ -40,8 +40,8 @@ public class Main {
                     check.put(num, 0L);
                 } else {
                     result += 1;
-                    check.put(num, check.get(num) - pairsToAdd);
-                    check.put(pair, check.get(pair) - pairsToAdd);
+                    check.put(num, check.get(num) - 1);
+                    check.put(pair, check.get(pair) - 1);
                 }
             }
         }
