@@ -34,9 +34,16 @@ public class Main {
             long pair = K - num;
 
             if (check.containsKey(num) && check.containsKey(pair) && check.get(num) > 0 && check.get(pair) > 0) {
-                result += 1;
-                check.put(num, check.get(num) - 1);
-                check.put(pair, check.get(pair) - 1);
+                if (num == pair) {
+                    long count = check.get(num);
+                    result += (count * (count - 1)) / 2;
+                    check.put(num, 0L);
+                } else {
+                    long pairsToAdd = Math.min(check.get(num), check.get(pair));
+                    result += pairsToAdd;
+                    check.put(num, check.get(num) - pairsToAdd);
+                    check.put(pair, check.get(pair) - pairsToAdd);
+                }
             }
         }
         System.out.print(result);
