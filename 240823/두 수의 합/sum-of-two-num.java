@@ -39,8 +39,7 @@ public class Main {
                     result += (count * (count - 1)) / 2;
                     check.put(num, 0L);
                 } else {
-                    long pairsToAdd = Math.min(check.get(num), check.get(pair));
-                    result += pairsToAdd;
+                    result += 1;
                     check.put(num, check.get(num) - pairsToAdd);
                     check.put(pair, check.get(pair) - pairsToAdd);
                 }
