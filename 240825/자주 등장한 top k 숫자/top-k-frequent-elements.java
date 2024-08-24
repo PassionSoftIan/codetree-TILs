@@ -1,5 +1,20 @@
 import java.util.*;
 
+class Pair implements Comparable<Pair> {
+    int num, count;
+    public Pair(int num, int count) {
+        this.count = count;
+        this.num = num;
+    }
+    @Override
+    public int compareTo(Pair target) {
+        if (count == target.count) {
+            return target.num - num;
+        }
+        return target.count - count;
+    }
+}
+
 public class Main {
 
     public static int N;
@@ -7,7 +22,7 @@ public class Main {
 
     public static HashMap<Integer, Integer> countCheck = new HashMap<>();
 
-    public static ArrayList<Integer> arr = new ArrayList<>();
+    public static ArrayList<Pair> arr = new ArrayList<>();
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -27,22 +42,14 @@ public class Main {
             }
         }
 
-        int maxCount = 0;
-
         for (Integer key : countCheck.keySet()) {
-            maxCount = Math.max(maxCount, countCheck.get(key));
-        }
-
-        for (Integer key : countCheck.keySet()) {
-            if (maxCount == countCheck.get(key)) {
-                arr.add(key);
-            }
+            arr.add(new Pair(key, countCheck.get(key)));
         }
 
         arr.sort(null);
 
-        for (int i = arr.size() - 1; i >= 0; i--) {
-            System.out.print(arr.get(i) + " ");
+        for (int i = 0; i < K; i++) {
+            System.out.print(arr.get(i).num + " ");
         }
     }
 }
