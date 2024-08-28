@@ -15,13 +15,13 @@ public class Main {
         for (int i = 0; i < N; i++) {
             String cmd = sc.next();
             if (cmd.equals("push")) {
-                pq.add(sc.nextInt());
+                pq.add(-sc.nextInt());
             }
             else if (cmd.equals("size")) {
                 System.out.println(pq.size());
             }
             else if (cmd.equals("pop")) {
-                System.out.println(pq.poll());
+                System.out.println(-pq.poll());
             }
             else if (cmd.equals("empty")) {
                 if (pq.isEmpty()) {
@@ -32,7 +32,7 @@ public class Main {
                 }
             }
             else if (cmd.equals("top")) {
-                System.out.println(pq.peek());
+                System.out.println(-pq.peek());
             }
         }
 
