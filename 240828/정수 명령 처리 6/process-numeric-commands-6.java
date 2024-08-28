@@ -31,6 +31,9 @@ public class Main {
                     System.out.println(0);
                 }
             }
+            else if (cmd.equals("top")) {
+                System.out.println(pq.peek());
+            }
         }
 
 
