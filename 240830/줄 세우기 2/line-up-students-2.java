@@ -14,7 +14,7 @@ class Student implements Comparable<Student> {
         if (this.height != students.height) {
             return this.height - students.height;
         }
-        return this.weight - students.weight;
+        return students.weight - this.weight;
     }
 
     @Override
