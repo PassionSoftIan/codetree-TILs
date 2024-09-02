@@ -4,7 +4,7 @@ public class Main {
 
     public static int N;
     public static int[] arr;
-    public static PriorityQueue<Integer> pq = new PriorityQueue<>();
+    public static PriorityQueue<Integer> pq;
 
     public static int maxSum;
 
@@ -30,6 +30,8 @@ public class Main {
             maxSum -= arr[K];
 
             int tempSum = maxSum;
+
+            pq = new PriorityQueue<>();
 
             for (int i = K+1; i < N; i++) {
                 pq.add(arr[i]);
