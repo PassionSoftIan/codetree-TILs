@@ -19,9 +19,6 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
-        }
-
-        for (int i = 0; i < N; i++) {
             maxSum += arr[i];
         }
 
