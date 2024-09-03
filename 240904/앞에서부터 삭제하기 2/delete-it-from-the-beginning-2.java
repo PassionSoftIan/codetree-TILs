@@ -25,7 +25,7 @@ public class Main {
 
         int total = arr[N-1];
 
-        float maxResult = arr[N-1];
+        float maxResult = 0;
 
         for (int i = N-2; i >= 1; i--) {
             pq.add(arr[i]);
