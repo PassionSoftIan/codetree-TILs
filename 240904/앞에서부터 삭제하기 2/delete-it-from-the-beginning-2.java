@@ -32,7 +32,7 @@ public class Main {
 
             total += arr[i];
 
-            maxResult = Math.max(maxResult, (total - pq.peek()) / (pq.size() - 1));
+            maxResult = Math.max(maxResult, (double) (total - pq.peek()) / (pq.size() - 1));
         }
         System.out.printf("%.2f", maxResult);
     }
