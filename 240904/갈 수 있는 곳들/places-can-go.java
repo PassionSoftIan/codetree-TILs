@@ -76,10 +76,10 @@ public class Main {
             int n = sc.nextInt();
             int m = sc.nextInt();
 
-            if (arr[n][m] == 1) {
+            if (arr[n-1][m-1] == 1) {
                 continue;
             }
-            push(n, m);
+            push(n-1, m-1);
             BFS();
         }
         System.out.print(count);
