@@ -46,7 +46,7 @@ public class Main {
         int ans = 0;
 
         for (int t = 10000; t >= 1; t--) {
-            while (bombIdx < N && bombs[bombIdx].time >= t) {
+            while (bombIdx < N && bombs[bombIdx].time == t) {
                 pq.add(-bombs[bombIdx].score);
                 bombIdx++;
             }
