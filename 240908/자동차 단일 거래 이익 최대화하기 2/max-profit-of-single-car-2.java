@@ -24,7 +24,7 @@ public class Main {
         int minPrice = cars[0];
 
         for (int i = 0; i < N; i++) {
-            int profit = cars[i] - minprice;
+            int profit = cars[i] - minPrice;
 
             if (profit > maxProfit) {
                 maxProfit = profit;
