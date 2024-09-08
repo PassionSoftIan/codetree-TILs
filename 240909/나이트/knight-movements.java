@@ -67,11 +67,11 @@ public class Main {
 
         visited = new boolean[N][N];
 
-        int startY = sc.nextInt();
-        int startX = sc.nextInt();
+        int startY = sc.nextInt()-1;
+        int startX = sc.nextInt()-1;
 
-        endY = sc.nextInt();
-        endX = sc.nextInt();
+        endY = sc.nextInt()-1;
+        endX = sc.nextInt()-1;
 
         minResult = -1;
         push(startY, startX, 0);
