@@ -21,17 +21,17 @@ public class Main {
         }
 
         int maxProfit = 0;
-        int minPrice = price[0];
+        int minPrice = cars[0];
 
         for (int i = 0; i < N; i++) {
-            int profit = price[i] - minprice;
+            int profit = cars[i] - minprice;
 
             if (profit > maxProfit) {
                 maxProfit = profit;
             }
 
-            if (minPrice > price[i]) {
-                minPrice = price[i];
+            if (minPrice > cars[i]) {
+                minPrice = cars[i];
             }
         }
         System.out.print(maxProfit);
