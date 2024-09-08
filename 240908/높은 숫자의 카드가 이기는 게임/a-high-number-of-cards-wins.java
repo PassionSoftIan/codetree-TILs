@@ -36,6 +36,7 @@ public class Main {
             int bCard = throwB.get(i);
 
             if (A.higher(bCard) != null) {
+                A.remove(A.higher(bCard));
                 maxScore++;
             }
         }
