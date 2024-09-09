@@ -2,7 +2,7 @@ import java.util.*;
 
 class Pair {
     int n, m, time, count;
-    
+
     public Pair(int n, int m, int time, int count) {
         this.n = n;
         this.m = m;
@@ -19,18 +19,18 @@ public class Main {
     public static int K;
 
     public static int[][] arr;
-    public static boolean[][] visited;
+    public static boolean[][][] visited;
 
     public static Queue<Pair> q = new LinkedList<>();
 
     public static int result = -1;
 
-    public static boolean canGo(int ny, int nx) {
-        return 0 <= ny && ny < N && 0 <= nx && nx < N && !visited[ny][nx];
+    public static boolean canGo(int ny, int nx, int count) {
+        return 0 <= ny && ny < N && 0 <= nx && nx < N && !visited[ny][nx][count];
     }
 
     public static void push(int n, int m, int time, int count) {
-        visited[n][m] = true;
+        visited[n][m][count] = true;
         q.add(new Pair(n, m, time, count));
     }
 
@@ -42,21 +42,22 @@ public class Main {
             int time = pair.time;
             int count = pair.count;
 
-            if (count <= K && n == r2 && m == c2) {
-                result = time;
-                return;
+            if (n == r2 && m == c2) {
+                result = time;  // 도착 시 시간을 저장
+                return;         // 최단 경로이므로 바로 종료 가능
             }
 
             for (int k = 0; k < 4; k++) {
                 int ny = n + dy[k];
                 int nx = m + dx[k];
 
-                if (canGo(ny, nx)) {
-                    if (arr[ny][nx] == 1) {
-                        push(ny, nx, time+1, count+1);
-                    }
-                    else {
-                        push(ny, nx, time+1, count);
+                if (canGo(ny, nx, count)) {
+                    if (arr[ny][nx] == 1 && count < K) {
+                        // 벽을 없애고 이동
+                        push(ny, nx, time + 1, count + 1);
+                    } else if (arr[ny][nx] == 0) {
+                        // 벽이 없으면 그냥 이동
+                        push(ny, nx, time + 1, count);
                     }
                 }
             }
@@ -64,14 +65,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
         K = sc.nextInt();
 
         arr = new int[N][N];
-        visited = new boolean[N][N];
+        visited = new boolean[N][N][K + 1];
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
@@ -79,11 +79,14 @@ public class Main {
             }
         }
 
-        int r1 = sc.nextInt()-1, c1 = sc.nextInt()-1, r2 = sc.nextInt()-1, c2 = sc.nextInt()-1;
+        int r1 = sc.nextInt() - 1, c1 = sc.nextInt() - 1;
+        int r2 = sc.nextInt() - 1, c2 = sc.nextInt() - 1;
 
+        // BFS 시작
         push(r1, c1, 0, 0);
         BFS(r2, c2);
 
+        // 결과 출력
         System.out.print(result);
     }
 }
