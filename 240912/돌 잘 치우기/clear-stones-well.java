@@ -20,6 +20,8 @@ public class Main {
     public static int[][] arr;
     public static boolean[][] visited;
 
+    public static Pair[] startPoint;
+
     public static Queue<Pair> q = new LinkedList<>();
 
     public static ArrayList<Pair> lst = new ArrayList<>();
@@ -55,15 +57,19 @@ public class Main {
         }
     }
 
-    public static void backTracking(int n, int m, int depth, int start) {
+    public static void backTracking(int depth, int start) {
         if (depth == M) {
             for (Pair stone : result) {
                 arr[stone.n][stone.m] = 0;
             }
 
-            tempAns = 0;
             visited = new boolean[N][N];
-            push(n, m);
+            tempAns = 0;
+
+            for (int i = 0; i < K; i++) {
+                push(startPoint[i].n, startPoint[i].m);
+            }
+
             BFS();
             ans = Math.max(ans, tempAns);
 
@@ -79,7 +85,7 @@ public class Main {
             int stoneM = pair.m;
 
             result.push(new Pair(stoneN, stoneM));
-            backTracking(n, m, depth+1, i+1);
+            backTracking(depth+1, i+1);
             result.pop();
         }
     }
@@ -109,12 +115,17 @@ public class Main {
             }
         }
 
+        startPoint = new Pair[K];
+
         for (int i = 0; i < K; i++) {
             int row = sc.nextInt() - 1;
             int col = sc.nextInt() - 1;
 
-            backTracking(row, col, 0, 0);
+            startPoint[i] = new Pair(row, col);
+
         }
+
+        backTracking(0, 0);
 
         System.out.print(ans);
     }
