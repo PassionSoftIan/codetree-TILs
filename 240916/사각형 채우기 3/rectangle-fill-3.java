@@ -4,7 +4,7 @@ public class Main {
 
     public static int N;
 
-    public static int[] dp;
+    public static long[] dp;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -13,7 +13,7 @@ public class Main {
 
         N = sc.nextInt();
 
-        dp = new int[1001];
+        dp = new long[1001];
 
         dp[1] = 2;
         dp[2] = 7;
