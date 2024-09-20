@@ -25,7 +25,7 @@ public class Main {
         dp[0][N-1] = arr[0][N-1];
 
         for (int i = 1; i < N; i++) {
-            dp[i][2] = dp[i-1][2] + arr[i][2];
+            dp[i][N-1] = dp[i-1][N-1] + arr[i][N-1];
         }
 
         for (int i = N-2; i >= 0; i--) {
