@@ -10,28 +10,27 @@ public class Main {
 
     public static int[][] dp;
 
-    public static boolean[][] visited;
-
     public static boolean canGo(int ny, int nx, int n, int m) {
-        return 0 <= ny && ny < N && 0 <= nx && nx < N && !visited[ny][nx] && arr[n][m] < arr[ny][nx];
+        return 0 <= ny && ny < N && 0 <= nx && nx < N && arr[n][m] < arr[ny][nx];
     }
 
-    public static void check(int ny, int nx, int count) {
-        visited[ny][nx] = true;
-        dp[ny][nx] = Math.max(dp[ny][nx], count);
-    }
+    public static int DFS(int n, int m) {
+        if (dp[n][m] != 0) {
+            return dp[n][m];
+        }
 
-    public static void DFS(int n, int m, int count) {
+        dp[n][m] = 1;
 
         for (int k = 0; k < 4; k++) {
             int ny = n + dy[k];
             int nx = m + dx[k];
 
             if (canGo(ny, nx, n, m)) {
-                check(ny, nx, count);
-                DFS(ny, nx, count + 1);
+                dp[n][m] = Math.max(dp[n][m], DFS(ny, nx) + 1);
             }
         }
+
+        return dp[n][m];
     }
 
     public static void main(String[] args) {
@@ -49,21 +48,12 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                visited = new boolean[N][N];
-                check(i, j, 1);
-                DFS(i, j, 2);
-            }
-        }
-
         int maxResult = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                maxResult = Math.max(dp[i][j], maxResult);
+                maxResult = Math.max(maxResult, DFS(i, j));
             }
         }
-
         System.out.print(maxResult);
     }
 }
