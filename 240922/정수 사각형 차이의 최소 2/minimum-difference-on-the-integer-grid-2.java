@@ -76,13 +76,25 @@ public class Main {
                     dp[i][j] = pair;
                 }
                 else if (arrRowMinResult == arrColMinResult) {
-                    if (fromColMaxNum < fromRowMaxNum) {
-                        Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
-                        dp[i][j] = pair;                        
+                    if (Math.abs(fromRowMinNum - fromColMinNum) < Math.abs(fromRowMaxNum - fromColMaxNum)) {
+                        if (fromRowMaxNum > fromColMaxNum) {
+                            Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
+                            dp[i][j] = pair;                        
+                        }
+                        else {
+                            Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
+                            dp[i][j] = pair;                          
+                        }
                     }
                     else {
-                        Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
-                        dp[i][j] = pair;                          
+                        if (fromRowMinNum < fromColMinNum) {
+                            Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
+                            dp[i][j] = pair;                        
+                        }
+                        else {
+                            Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
+                            dp[i][j] = pair;                          
+                        }                        
                     }
                 }
                 else {
