@@ -21,7 +21,7 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        dp[0] = 1;
+        Arrays.fill(dp, 1);
 
         for (int i = 1; i < N; i++) {
             for (int j = 0; j < i; j++) {
@@ -30,7 +30,12 @@ public class Main {
                 }
             }
         }
-        Arrays.sort(dp);
-        System.out.print(dp[N-1]);
+
+        int maxResult = 0;
+        for (int i = 0; i < N; i++) {
+            maxResult = Math.max(maxResult, dp[i]);
+        }
+
+        System.out.print(maxResult);
     }
 }
