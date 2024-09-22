@@ -1,108 +1,87 @@
 import java.util.*;
 
-class Pair {
-    int minNum, maxNum, minResult;
-
-    public Pair(int minNum, int maxNum, int minResult) {
-        this.minNum = minNum;
-        this.maxNum = maxNum;
-        this.minResult = minResult;
-    }
-
-    @Override
-    public String toString() {
-        return "(" + " " + String.valueOf(minNum) + " " + String.valueOf(maxNum) + " " + String.valueOf(minResult) + " " + ")";
-    }
-}
-
 public class Main {
-    public static int[] dy = {0, 1};
-    public static int[] dx = {1, 0};
-
     public static int N;
-
     public static int[][] arr;
-    public static Pair[][] dp;
+    public static boolean[][] visited;
+
+    public static int[] dx = {1, 0}; // 오른쪽 혹은 아래로만 이동
+    public static int[] dy = {0, 1}; 
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
-
         arr = new int[N][N];
-        dp = new Pair[N][N];
 
+        int minVal = Integer.MAX_VALUE;
+        int maxVal = Integer.MIN_VALUE;
+
+        // 격자의 값 입력 받기
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 arr[i][j] = sc.nextInt();
+                minVal = Math.min(minVal, arr[i][j]); // 최솟값
+                maxVal = Math.max(maxVal, arr[i][j]); // 최댓값
             }
         }
 
-        dp[0][0] = new Pair(arr[0][0], arr[0][0], 0);
+        int result = maxVal - minVal;
 
-        for (int i = 1; i < N; i++) {
-            
-            int colMinNum = Math.min(dp[0][i-1].minNum, arr[0][i]);
-            int colMaxNum = Math.max(dp[0][i-1].maxNum, arr[0][i]);
-            dp[0][i] = new Pair(colMinNum, colMaxNum, Math.abs(colMaxNum - colMinNum));
+        // 이진 탐색 시작 (최댓값과 최솟값의 차이를 이진 탐색으로 줄여나감)
+        int left = 0, right = maxVal - minVal;
+        while (left <= right) {
+            int mid = (left + right) / 2;
 
-            int rowMinNum = Math.min(dp[i-1][0].minNum, arr[i][0]);
-            int rowMaxNum = Math.max(dp[i-1][0].maxNum, arr[i][0]);
-            dp[i][0] = new Pair(rowMinNum, rowMaxNum, Math.abs(rowMaxNum - rowMinNum));
+            boolean canReach = false;
+
+            // 최솟값을 기준으로 가능한 범위를 정함
+            for (int start = minVal; start + mid <= maxVal; start++) {
+                int low = start;
+                int high = start + mid;
+
+                visited = new boolean[N][N];
+                if (arr[0][0] >= low && arr[0][0] <= high) {
+                    canReach = dfs(0, 0, low, high); // DFS로 도착 가능한지 체크
+                }
+
+                if (canReach) break;
+            }
+
+            // 가능한 범위였다면 차이를 줄여봄
+            if (canReach) {
+                result = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
         }
 
-        for (int i = 1; i < N; i++) {
-            for (int j = 1; j < N; j++) {
-                int fromRowMinNum = dp[i-1][j].minNum;
-                int fromRowMaxNum = dp[i-1][j].maxNum;
-                int fromRowMinResult = dp[i-1][j].minResult;
+        // 최종 결과 출력
+        System.out.println(result);
+    }
 
+    // DFS를 사용하여 (0,0)에서 (N-1,N-1)까지 범위 내에서 이동할 수 있는지 확인
+    public static boolean dfs(int x, int y, int low, int high) {
+        if (x == N - 1 && y == N - 1) {
+            return true;
+        }
 
-                int fromColMinNum = dp[i][j-1].minNum;
-                int fromColMaxNum = dp[i][j-1].maxNum;
-                int fromColMinResult = dp[i][j-1].minResult;
+        visited[x][y] = true;
 
-                int arrRowMinNum = Math.min(fromRowMinNum, arr[i][j]);
-                int arrRowMaxNum = Math.max(fromRowMaxNum, arr[i][j]);
-                int arrRowMinResult = Math.abs(arrRowMaxNum - arrRowMinNum);
+        for (int i = 0; i < 2; i++) { // 오른쪽 또는 아래로만 이동
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
-                int arrColMinNum = Math.min(fromColMinNum, arr[i][j]);
-                int arrColMaxNum = Math.max(fromColMaxNum, arr[i][j]);
-                int arrColMinResult = Math.abs(arrColMaxNum - arrColMinNum);
-
-                if (arrRowMinResult > arrColMinResult) {
-                    Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
-                    dp[i][j] = pair;
-                }
-                else if (arrRowMinResult == arrColMinResult) {
-                    if (Math.abs(fromRowMinNum - fromColMinNum) < Math.abs(fromRowMaxNum - fromColMaxNum)) {
-                        if (fromRowMaxNum > fromColMaxNum) {
-                            Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
-                            dp[i][j] = pair;                        
-                        }
-                        else {
-                            Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
-                            dp[i][j] = pair;                          
-                        }
+            if (nx >= 0 && nx < N && ny >= 0 && ny < N && !visited[nx][ny]) {
+                if (arr[nx][ny] >= low && arr[nx][ny] <= high) {
+                    if (dfs(nx, ny, low, high)) {
+                        return true;
                     }
-                    else {
-                        if (fromRowMinNum < fromColMinNum) {
-                            Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
-                            dp[i][j] = pair;                        
-                        }
-                        else {
-                            Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
-                            dp[i][j] = pair;                          
-                        }                        
-                    }
-                }
-                else {
-                    Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
-                    dp[i][j] = pair;                    
                 }
             }
         }
-        System.out.print(dp[N-1][N-1].minResult);
+
+        return false;
     }
 }
