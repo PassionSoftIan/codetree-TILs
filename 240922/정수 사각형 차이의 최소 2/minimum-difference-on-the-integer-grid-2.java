@@ -75,6 +75,16 @@ public class Main {
                     Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
                     dp[i][j] = pair;
                 }
+                else if (arrRowMinResult == arrColMinResult) {
+                    if (fromColMaxNum < fromRowMaxNum) {
+                        Pair pair = new Pair(arrColMinNum, arrColMaxNum, arrColMinResult);
+                        dp[i][j] = pair;                        
+                    }
+                    else {
+                        Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
+                        dp[i][j] = pair;                          
+                    }
+                }
                 else {
                     Pair pair = new Pair(arrRowMinNum, arrRowMaxNum, arrRowMinResult);
                     dp[i][j] = pair;                    
