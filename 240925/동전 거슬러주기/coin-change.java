@@ -34,7 +34,7 @@ public class Main {
         for (int i = 1; i <= M; i++) {
             for (int j = 0; j < N; j++) {
                 if (coins[j] <= i) {
-                    if (dp[i - coins[j]] == -1) {
+                    if (dp[i - coins[j]] == Integer.MAX_VALUE) {
                         continue;
                     }
 
@@ -42,7 +42,7 @@ public class Main {
                 }
             }
         }
-        if (dp[M] == -1) {
+        if (dp[M] == Integer.MAX_VALUE) {
             System.out.print(-1);
         }
         else {
