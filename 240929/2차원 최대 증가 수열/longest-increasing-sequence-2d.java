@@ -43,14 +43,7 @@ public class Main {
                 }
             }
         }
-
-        int maxCount = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                maxCount = Math.max(maxCount, dp[i][j]);
-            }
-        }
         
-        System.out.print(maxCount);
+        System.out.print(dp[N-1][M-1]);
     }
 }
