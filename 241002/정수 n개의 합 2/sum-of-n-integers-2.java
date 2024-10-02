@@ -24,15 +24,15 @@ public class Main {
             nums[i] = sc.nextInt();
         }
 
-        prefixSum[1] = nums[0];
+        prefixSum[0] = nums[0];
 
-        for (int i = 2; i < N; i++) {
-            prefixSum[i] = prefixSum[i-1] + nums[i-2];
+        for (int i = 1; i < N; i++) {
+            prefixSum[i] = prefixSum[i-1] + nums[i];
         }
 
         int maxResult = Integer.MIN_VALUE;
         for (int i = K; i < N; i++) {
-            maxResult = Math.max(maxResult, prefixSum[i] - prefixSum[i-K]);
+            maxResult = Math.max(maxResult, prefixSum[i] - prefixSum[i-K+1] + nums[i-K+1]);
         }
 
         System.out.print(maxResult);
